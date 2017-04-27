@@ -18,7 +18,7 @@ class BasicAuthenticationFilter
     {
         
 
-        //return $next($request);
+        //HTTP Basic Authentication for API
         return Auth::onceBasic('username') ?: $next($request);
 
     }

@@ -15,13 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Resourceful controller with authentication
+|--------------------------------------------------------------------------
+|
+*/
 
-Route::group(['middleware'=>'filter'], function(){
-
-	Route::get('/authtest', array('before' => 'auth.basic', function(){
+Route::group(['prefix' => 'api/v1','middleware'=>['filter'],'before' => 'auth.basic'], function(){
+    
+	    Route::resource('/url', 'UrlController');	
 	    
-	    return View::make('hello');
-	}));	
 });
 
 
