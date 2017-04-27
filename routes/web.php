@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::group(['middleware'=>'filter'], function(){
+
+	Route::get('/authtest', array('before' => 'auth.basic', function(){
+	    
+	    return View::make('hello');
+	}));	
+});
+
+
+
